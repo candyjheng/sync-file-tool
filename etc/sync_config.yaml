@@ -1,0 +1,15 @@
+
+host-ip-dest: 127.0.0.1 # 檔案同步目的地端 IP
+port: 22 # default: 22, SCP 使用的 port 號
+user-name: username # SCP 使用者名稱
+ssh-key: /tmp/test_rsa # SSH key 路徑
+sync-options: # 變數清單，如 sync-files中的選項有帶變數時使用
+  sys: 'system name' # 格式為 變數名稱: 變數在 help中的描述文字
+  product: 'product table name'
+sync-files:
+# 需要進行同步(scp)的檔案路徑，變數區塊使用大括弧進行表示
+# 變數名稱需要與sync-options 中設定的文字相同
+# 格式為 檔案簡稱: 檔案路徑>樣板
+  product: /tmp/{sys}/etc/product_config.yaml
+  token: /tmp/run/{product}_run
+
